@@ -1,0 +1,9 @@
+<div>
+  <h1>Upcoming Angular Events</h1>
+  <hr>
+  <event-thumbnail #thumbnail [event]="event1"></event-thumbnail>
+  <!-- thumbnail is an instance of EventThumbnailComponent class -->
+  <h3>{{thumbnail.templateVar.value}}</h3>
+  <h3>{{thumbnail.templateVar.scope}}</h3>
+  <h4>{{thumbnail.templateVarFunc()}}</h4>
+</div>
