@@ -13,4 +13,9 @@ export class EventThumbnailComponent {
   templateVarFunc() {
     return 'Call the template variable function to get the data from child component.';
   }
+  getStartTimeClass() {
+    const isEarlyStart = this.event && this.event.time === '8:00 am';
+    return {green: isEarlyStart, bold: isEarlyStart};
+    // can also return string 'green bold' | '' or array ['green', 'bold'] | []
+  }
 }

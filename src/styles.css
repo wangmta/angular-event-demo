@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "~bootstrap/dist/css/bootstrap.css"; */
+
+@import "~ngf-bootstrap/dist/bootstrap.min.css";
+@import "toastr";
+
 .hoverwell:hover {
   background-color: #485563;
   cursor: pointer;
@@ -32,3 +37,15 @@ button {
 .toast-warning {
   background-color: #f89406;
 }
+.well.hoverwell.thumbnail {
+  text-align: left;
+}
+
+.green {
+  color: rgb(35, 240, 206);
+}
+
+.bold {
+  font-weight: bold;
+}
+

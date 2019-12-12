@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
     `
     .nav.navbar-nav {font-size: 15px;}
     #searForm {margin-right: 100px;}
+    li > a.active {color: #f89406;}
     `
   ]
 })

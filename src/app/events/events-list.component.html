@@ -1,9 +1,15 @@
 <div>
   <h1>Upcoming Angular Events</h1>
   <hr>
-  <event-thumbnail #thumbnail [event]="event1"></event-thumbnail>
+  <!-- <event-thumbnail #thumbnail [event]="event1"></event-thumbnail> -->
+  <!-- *ng.. is structural directive, it modifies the dom, add/remove nodes -->
+  <div class="row">
+    <div *ngFor="let event of events" class="col-md-5">
+      <event-thumbnail #thumbnail *ngFor="let event of events" [event]="event" (click)="handleThumbnailCLick(event.name)"></event-thumbnail>
+    </div>
+  </div>
   <!-- thumbnail is an instance of EventThumbnailComponent class -->
-  <h3>{{thumbnail.templateVar.value}}</h3>
+  <!-- <h3>{{thumbnail.templateVar.value}}</h3>
   <h3>{{thumbnail.templateVar.scope}}</h3>
-  <h4>{{thumbnail.templateVarFunc()}}</h4>
+  <h4>{{thumbnail.templateVarFunc()}}</h4> -->
 </div>
