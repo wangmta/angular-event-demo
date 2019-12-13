@@ -8,6 +8,8 @@ import { NavBarComponent } from './nav/navbar.component';
 import { ToastrService } from './common/toastr.service';
 import { Error404Component } from './errors/404.component';
 import { EventsListComponent, EventThumbnailComponent, EventDetailsComponent, CreateEventComponent, EventService, EventRouteActivator, EventListResolver } from './events/index';
+import { AuthService } from './user';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -17,18 +19,22 @@ import { EventsListComponent, EventThumbnailComponent, EventDetailsComponent, Cr
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
+  //providers declared here is share accross the app
   providers: [
     EventService,
     ToastrService,
     EventRouteActivator,
     EventListResolver,
-    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}
+    AuthService,
+    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
   ],
   bootstrap: [AppComponent]
 })

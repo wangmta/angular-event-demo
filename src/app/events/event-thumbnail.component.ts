@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { IEvent } from './index';
 
 @Component({
   selector: 'event-thumbnail',
   templateUrl: 'event-thumbnail.component.html'
 })
 export class EventThumbnailComponent {
-  @Input() event: any;
+  @Input() event: IEvent;
   templateVar = {
     value: 'This is template variable passed from child to parent.',
     scope: 'It can access any public member of this class.'
