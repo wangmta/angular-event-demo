@@ -5,7 +5,13 @@ import { appRoutes } from './routes';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import { ToastrService } from './common/toastr.service';
+import {
+  CollapsibleWellComponent,
+  TOASTR_TOKEN,
+  JQ_TOKEN,
+  SimpleModalComponent,
+  ModalTriggerDirective
+} from './common/';
 import { Error404Component } from './errors/404.component';
 import {
   EventsListComponent,
@@ -15,10 +21,20 @@ import {
   EventService,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent
-} from './events/index';
+  CreateSessionComponent,
+  SessionListComponent,
+  DurationPipe
+} from './events';
 import { AuthService } from './user';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// this is global toastr object
+import * as toastr from 'toastr';
+import * as jQuery from 'jquery';
+
+// alternative way of using global var
+// let toastr: Toastr = window['toastr'];
+// let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -29,13 +45,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent,
+    CollapsibleWellComponent,
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
-  //providers declared here is share accross the app
+  // providers declared here is share accross the app
   providers: [
     EventService,
-    ToastrService,
+    // ToastrService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     EventRouteActivator,
     EventListResolver,
     AuthService,

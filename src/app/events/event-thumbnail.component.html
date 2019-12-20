@@ -1,7 +1,7 @@
 <!-- "?" safe navigation operator  -->
 <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
   <h2>{{event.name}}</h2>
-  <div>Date: {{ event.date }}</div>
+  <div>Date: {{ event.date  | date: 'shortDate' }}</div>
   <!-- [ngClass]="getStartTimeClass()" -->
   <!-- [style.color] style binding -->
   <!-- [ngStyle]="{'color': event?.time === '8:00 am'?'#fff':'#eee', 'font-weight':event?.time === '8:00 am'?'bold':'normal'}" -->
@@ -11,7 +11,7 @@
     <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
     <span *ngSwitchDefault>(Normal Start)</span>
   </div>
-  <div>Price: {{ event.price | currency }}</div>
+  <div>Price: {{ event.price | currency: 'USD' }}</div>
   <!-- <div *ngIf="event?.location"> -->
   <div [hidden]="!event?.location">
     <span>Location: {{ event?.location?.address }}</span>
