@@ -26,7 +26,8 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a [routerLink]="['/user/profile']" *ngIf="auth.isAuthenticated()">Welcome John</a>
+            <a [routerLink]="['/user/profile']" *ngIf="auth.isAuthenticated()">Welcome
+              {{auth.currentUser.firstName}}</a>
             <a [routerLink]="['/user/login']" *ngIf="!auth.isAuthenticated()">Login</a>
           </li>
         </ul>
@@ -36,7 +37,7 @@
           <input type="text" [(ngModel)]="searchTerm" name="searchTerm" class="form-control"
             placeholder="Search Sessions">
         </div>
-        <button class="btn btn-default" modal-trigger>
+        <button class="btn btn-default" modal-trigger="searchResults">
           Search
         </button>
       </form>
@@ -44,9 +45,15 @@
   </div>
 </div>
 
-<simple-modal title="Matching Sessions">
+<simple-modal elementId="searchResults" [title]="'Matching Sessions'">
+  <div class="list-group">
+    <a class="list-group-item" *ngFor="let session of foundSessions"
+      [routerLink]="['/events', session.eventId]">{{session.name}}</a>
+  </div>
+</simple-modal>
+<!-- <simple-modal elementId="searchResults" title="Matching Sessions">
   <div class="list-group">
     <a class="list-group-item" *ngFor="let session of foundSesstions"
       [routerLink]="['/event', session.evetId]">{{session.name}}</a>
   </div>
-</simple-modal>
+</simple-modal> -->

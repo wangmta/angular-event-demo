@@ -6,8 +6,9 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent
-} from './events/index';
+  CreateSessionComponent,
+  EventResolver
+} from './events';
 
 export const appRoutes: Routes = [
   // angular can't differentitate /new & /:id, but put /news above will let it search this component first
@@ -16,8 +17,10 @@ export const appRoutes: Routes = [
     component: CreateEventComponent,
     canDeactivate: ['canDeactivateCreateEvent']
   },
+  // render the DOM after event service is resolved
   { path: 'events', component: EventsListComponent, resolve: { events: EventListResolver } },
-  { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
+  { path: 'events/:id', component: EventDetailsComponent, resolve: { event: EventResolver } },
+  // { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
   { path: 'events/session/new', component: CreateSessionComponent },
   { path: '404', component: Error404Component },
   { path: '', redirectTo: '/events', pathMatch: 'full' },

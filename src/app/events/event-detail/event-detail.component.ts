@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ISession } from '../shared';
 
 @Component({
@@ -28,9 +28,22 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
+  // ngOnInit() {
+  //   // + cast to positive number
+  //   // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+  //   // the above is problematic when nav to the same page with diff ids
+  //   this.route.params.forEach((params: Params) => {
+  //     this.event = this.eventService.getEvent(+params['id']);
+  //     // reset state
+  //     this.addMode = false;
+  //   });
+  // }
+
   ngOnInit() {
-    // + cast to positive number
-    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+    this.route.data.forEach(data => {
+      this.event = data['event'];
+      this.addMode = false;
+    });
   }
 
   addSession() {
@@ -44,7 +57,9 @@ export class EventDetailsComponent implements OnInit {
     );
     session.id = nextId + 1;
     this.event.sessions.push(session);
-    this.eventService.updateEvent(this.event);
+    // this.eventService.updateEvent(this.event);
+    // update the event on the server
+    this.eventService.saveEvent(this.event).subscribe();
     this.addMode = false;
   }
 

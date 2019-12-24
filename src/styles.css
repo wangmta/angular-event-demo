@@ -28,15 +28,19 @@ button {
 .toast-success {
   background-color: #51a351;
 }
+
 .toast-error {
   background-color: #bd362f;
 }
+
 .toast-info {
   background-color: #2f96b4;
 }
+
 .toast-warning {
   background-color: #f89406;
 }
+
 .well.hoverwell.thumbnail {
   text-align: left;
 }
@@ -48,4 +52,3 @@ button {
 .bold {
   font-weight: bold;
 }
-
