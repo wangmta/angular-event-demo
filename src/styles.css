@@ -3,6 +3,7 @@
 
 @import "~ngf-bootstrap/dist/bootstrap.min.css";
 @import "toastr";
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 .hoverwell:hover {
   background-color: #485563;
@@ -51,4 +52,15 @@ button {
 
 .bold {
   font-weight: bold;
+}
+
+my-tooltip {
+  color: rgb(0, 81, 255);
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  /* background-color: aqua; */
 }

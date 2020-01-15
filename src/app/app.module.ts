@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { HttpClientModule } from '@angular/common/http';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/navbar.component';
@@ -27,20 +28,25 @@ import {
   DurationPipe,
   UpvoteComponent,
   VoterService,
-  LocationValidator,
   EventResolver
 } from './events';
+import { LocationValidator } from './directive';
 import { AuthService } from './user';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // this is global toastr object
 import * as toastr from 'toastr';
 import * as jQuery from 'jquery';
+import {
+  CustomTooltipDirective,
+  CustomTooltipComponent
+} from './directive/custom-tooltip.directive';
 
 // alternative way of using global var
 // let toastr: Toastr = window['toastr'];
 // let jQuery = window['$'];
 
+//  create AwesomeTooltipComponent dynamically in the runtime, use entryComponents instead of declarations
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,14 +63,17 @@ import * as jQuery from 'jquery';
     SimpleModalComponent,
     ModalTriggerDirective,
     UpvoteComponent,
-    LocationValidator
+    LocationValidator,
+    CustomTooltipDirective,
+    CustomTooltipComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    OverlayModule
   ],
   // providers declared here is share accross the app
   providers: [
@@ -79,7 +88,8 @@ import * as jQuery from 'jquery';
     EventResolver,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CustomTooltipComponent]
 })
 export class AppModule {}
 

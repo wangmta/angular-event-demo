@@ -7,5 +7,4 @@ export * from './event-detail/session-list.component';
 export * from './event-detail/upvote.component';
 export * from './event-detail/voter.service';
 export * from './shared/index';
-export * from './location-validator.directive';
 export * from './event-resolver.service';
