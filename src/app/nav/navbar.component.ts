@@ -33,3 +33,5 @@ export class NavBarComponent {
     });
   }
 }
+
+// the active link is pointing to Events since the router set it so ('', redirect to 'events')

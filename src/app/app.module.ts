@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 import { AppComponent } from './app.component';
@@ -46,6 +46,9 @@ import {
 // let toastr: Toastr = window['toastr'];
 // let jQuery = window['$'];
 
+import { LoaderComponent } from './reusable/loader/loader.component';
+import { LoaderInterceptorService } from './reusable/loader/loader-interceptor.service';
+
 //  create AwesomeTooltipComponent dynamically in the runtime, use entryComponents instead of declarations
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import {
     UpvoteComponent,
     LocationValidator,
     CustomTooltipDirective,
-    CustomTooltipComponent
+    CustomTooltipComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +90,8 @@ import {
     AuthService,
     VoterService,
     EventResolver,
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent],
   entryComponents: [CustomTooltipComponent]

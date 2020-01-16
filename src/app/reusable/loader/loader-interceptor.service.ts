@@ -23,10 +23,13 @@ export class LoaderInterceptorService implements HttpInterceptor {
       tap(
         (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-            this.onEnd();
+            setTimeout(() => {
+              this.onEnd();
+            }, 3000);
           }
         },
         (err: any) => {
+          console.log(err);
           this.onEnd();
         }
       )
