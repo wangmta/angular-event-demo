@@ -35,3 +35,33 @@
     </collapsible-well>
   </div>
 </div>
+
+<!-- <div *ngFor="let queue of fileUploadQueues">
+  <ng-container *ngIf="queue.result.file as file">
+       <div class="icon" *ngIf="file.icon">{{ file.icon }}</div>
+       <div class="name" *ngIf="file.name">{{ file.name }}</div>
+       <div class="size" *ngIf="file.size">{{ file.size }}</div>
+  </ng-container>
+</div -->
+
+<!-- <div *ngIf="(data$ | async).length > 0; else emptyTemplate;">
+  ...
+</div>
+<ng-template #emptyTemplate>
+  no data
+</ng-template> -->
+
+<!-- <ng-container *ngIf="type === 1">
+  ...
+</ng-container>
+<ng-container *ngIf="type === 2">
+  ...
+</ng-container>
+<ng-container *ngIf="type === 3">
+  ...
+</ng-container> -->
+
+<!-- The alias "data" can be reused in its scope -->
+<!-- <div *ngFor="let item of data$ | async as data">
+  <span>{{data.length}}</span>
+</div> -->
