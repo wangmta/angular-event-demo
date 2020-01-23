@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../user';
+import { AuthService } from '../services';
 import { ISession, EventService } from '../events';
 import { IUser } from '../user/user.model';
 

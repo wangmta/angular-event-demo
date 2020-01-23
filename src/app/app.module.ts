@@ -31,7 +31,7 @@ import {
   EventResolver
 } from './events';
 import { LocationValidator } from './directive';
-import { AuthService } from './user';
+import { AuthService } from './services';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // this is global toastr object
