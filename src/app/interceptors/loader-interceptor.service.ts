@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { LoaderService } from './loader.service';
+import { LoaderService } from '../reusable/loader/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class LoaderInterceptorService implements HttpInterceptor {
           if (event instanceof HttpResponse) {
             setTimeout(() => {
               this.onEnd();
-            }, 3000);
+            }, 1500);
           }
         },
         (err: any) => {

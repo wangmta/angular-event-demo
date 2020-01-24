@@ -5,6 +5,23 @@
 @import "toastr";
 @import '~@angular/cdk/overlay-prebuilt.css';
 
+@font-face {
+  font-family: 'Work-Sans';
+  src: url('./assets/fonts/Work_Sans/WorkSans-Light.ttf');
+}
+
+/* custom sytle, override bootstrap */
+
+.well {
+  border-radius: 5px;
+}
+
+div {
+  font-family: 'Work-Sans'
+}
+
+/* custom sytle, override bootstrap */
+
 .hoverwell:hover {
   background-color: #485563;
   cursor: pointer;

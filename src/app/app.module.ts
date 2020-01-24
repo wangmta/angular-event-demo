@@ -47,7 +47,7 @@ import {
 // let jQuery = window['$'];
 
 import { LoaderComponent } from './reusable/loader/loader.component';
-import { LoaderInterceptorService } from './reusable/loader/loader-interceptor.service';
+import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
 
 //  create AwesomeTooltipComponent dynamically in the runtime, use entryComponents instead of declarations
 @NgModule({
