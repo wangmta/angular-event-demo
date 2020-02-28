@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ISession } from '../shared';
 import { AuthService } from '../../services/auth.service';
-import { VoterService } from './voter.service';
+import { VoterService } from '../event-detail/voter.service';
 
 @Component({
   selector: 'session-list',
@@ -43,7 +43,9 @@ export class SessionListComponent implements OnChanges {
     } else {
       this.voterService.addVoter(this.eventId, session, this.auth.currentUser.userName);
     }
-    if (this.sortBy === 'votes') this.visibleSessions.sort(sortByVotersDesc);
+    if (this.sortBy === 'votes') {
+      this.visibleSessions.sort(sortByVotersDesc);
+    }
   }
 
   userHasVoted(session) {

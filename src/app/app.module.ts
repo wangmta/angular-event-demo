@@ -7,25 +7,14 @@ import { OverlayModule } from '@angular/cdk/overlay';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import {
-  CollapsibleWellComponent,
-  TOASTR_TOKEN,
-  JQ_TOKEN,
-  SimpleModalComponent,
-  ModalTriggerDirective
-} from './common/';
+import { TOASTR_TOKEN, JQ_TOKEN, SimpleModalComponent, ModalTriggerDirective } from './common/';
 import { Error404Component } from './errors/404.component';
 import {
   EventsListComponent,
   EventThumbnailComponent,
-  EventDetailsComponent,
   EventService,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent,
-  SessionListComponent,
-  DurationPipe,
-  UpvoteComponent,
   VoterService,
   EventResolver
 } from './events';
@@ -55,15 +44,9 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
     EventsListComponent,
     EventThumbnailComponent,
     NavBarComponent,
-    EventDetailsComponent,
     Error404Component,
-    CreateSessionComponent,
-    SessionListComponent,
-    CollapsibleWellComponent,
-    DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-    UpvoteComponent,
     LocationValidator,
     CustomTooltipDirective,
     CustomTooltipComponent,

@@ -17,7 +17,7 @@ import { Input, Output, EventEmitter, Component } from '@angular/core';
   styleUrls: ['./upvote.component.css']
 })
 export class UpvoteComponent {
-  @Input() count: number;
+  @Input('count') count: number;
   // @Input() voted: boolean;
   @Output() vote = new EventEmitter();
   @Input() set voted(val) {
