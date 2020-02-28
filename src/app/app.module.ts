@@ -19,7 +19,6 @@ import {
   EventsListComponent,
   EventThumbnailComponent,
   EventDetailsComponent,
-  CreateEventComponent,
   EventService,
   EventRouteActivator,
   EventListResolver,
@@ -57,7 +56,6 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
     EventThumbnailComponent,
     NavBarComponent,
     EventDetailsComponent,
-    CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
@@ -90,7 +88,7 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
     AuthService,
     VoterService,
     EventResolver,
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    // { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent],
@@ -98,9 +96,9 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
 })
 export class AppModule {}
 
-export function checkDirtyState(component: CreateEventComponent) {
-  if (component.isDirty) {
-    return window.confirm('You have not saved this event, do you really want to cancel?');
-  }
-  return true;
-}
+// export function checkDirtyState(component: CreateEventComponent) {
+//   if (component.isDirty) {
+//     return window.confirm('You have not saved this event, do you really want to cancel?');
+//   }
+//   return true;
+// }

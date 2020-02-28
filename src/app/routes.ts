@@ -14,9 +14,13 @@ export const appRoutes: Routes = [
   // angular can't differentitate /new & /:id, but put /news above will let it search this component first
   {
     path: 'events/new',
-    component: CreateEventComponent,
-    canDeactivate: ['canDeactivateCreateEvent']
+    loadChildren: './events/create-event/create-event.module#CreateEventModule'
   },
+  // {
+  //   path: 'events/new',
+  //   component: CreateEventComponent,
+  //   canDeactivate: ['canDeactivateCreateEvent']
+  // },
   // render the DOM after event service is resolved
   { path: 'events', component: EventsListComponent, resolve: { events: EventListResolver } },
   { path: 'events/:id', component: EventDetailsComponent, resolve: { event: EventResolver } },
