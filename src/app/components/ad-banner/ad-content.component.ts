@@ -1,5 +1,19 @@
 import { Component, Input } from '@angular/core';
-import { AdComponent } from './ad-banner.component';
+
+import { AdComponent } from './ad-container.component';
+
+@Component({
+  template: `
+    <div class="job-ad">
+      <h4>{{ data.headline }}</h4>
+
+      {{ data.body }}
+    </div>
+  `
+})
+export class HeroJobAdComponent implements AdComponent {
+  @Input() data: any;
+}
 
 @Component({
   template: `

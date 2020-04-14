@@ -38,6 +38,13 @@ import { LoaderComponent } from './reusable/loader/loader.component';
 import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
 
 //  create AwesomeTooltipComponent dynamically in the runtime, use entryComponents instead of declarations
+
+import {
+  HeroJobAdComponent,
+  HeroProfileComponent
+} from './components/ad-banner/ad-content.component';
+import { AdService } from './components/ad-banner/ad.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,10 +79,11 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
     VoterService,
     EventResolver,
     // { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
+    AdService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CustomTooltipComponent]
+  entryComponents: [CustomTooltipComponent, HeroJobAdComponent, HeroProfileComponent]
 })
 export class AppModule {}
 

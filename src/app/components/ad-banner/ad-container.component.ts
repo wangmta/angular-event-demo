@@ -5,10 +5,10 @@ import {
   ViewChild,
   ComponentFactoryResolver,
   OnDestroy,
-  Type
+  Type,
+  Directive,
+  ViewContainerRef
 } from '@angular/core';
-
-import { AdDirective } from './ad-host.directive';
 
 export class AdItem {
   constructor(public component: Type<any>, public data: any) {}
@@ -16,6 +16,13 @@ export class AdItem {
 
 export interface AdComponent {
   data: any;
+}
+
+@Directive({
+  selector: '[ad-host]'
+})
+export class AdHostDirective {
+  constructor(public viewContainerRef: ViewContainerRef) {}
 }
 
 @Component({
@@ -30,7 +37,7 @@ export interface AdComponent {
 export class AdBannerComponent implements OnInit, OnDestroy {
   @Input() ads: AdItem[];
   currentAdIndex = -1;
-  @ViewChild(AdDirective) adHost: AdDirective;
+  @ViewChild(AdHostDirective) adHost: AdHostDirective;
   interval: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
@@ -52,9 +59,12 @@ export class AdBannerComponent implements OnInit, OnDestroy {
       adItem.component
     );
 
+    // define the view wrapper ref of the ad-host
     const viewContainerRef = this.adHost.viewContainerRef;
+    // remove all nodes from this view wrapper
     viewContainerRef.clear();
 
+    // insert content into view wrapper
     const componentRef = viewContainerRef.createComponent(componentFactory);
     (<AdComponent>componentRef.instance).data = adItem.data;
   }
