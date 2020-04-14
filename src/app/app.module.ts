@@ -39,6 +39,7 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
 
 //  create AwesomeTooltipComponent dynamically in the runtime, use entryComponents instead of declarations
 
+import { AdBannerComponent } from './components/ad-banner/ad-container.component';
 import {
   HeroJobAdComponent,
   HeroProfileComponent
@@ -57,7 +58,10 @@ import { AdService } from './components/ad-banner/ad.service';
     LocationValidator,
     CustomTooltipDirective,
     CustomTooltipComponent,
-    LoaderComponent
+    LoaderComponent,
+    AdBannerComponent,
+    HeroJobAdComponent,
+    HeroProfileComponent
   ],
   imports: [
     BrowserModule,

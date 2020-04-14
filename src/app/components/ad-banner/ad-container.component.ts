@@ -30,14 +30,15 @@ export class AdHostDirective {
   template: `
     <div class="ad-banner-example">
       <h3>Advertisements</h3>
-      <ng-template ad-host></ng-template>
+      <div #adHost></div>
     </div>
   `
 })
 export class AdBannerComponent implements OnInit, OnDestroy {
   @Input() ads: AdItem[];
   currentAdIndex = -1;
-  @ViewChild(AdHostDirective) adHost: AdHostDirective;
+  // @ViewChild(AdHostDirective, { read: AdHostDirective }) adHost: AdHostDirective;
+  @ViewChild('adHost', { read: ViewContainerRef }) adHost: ViewContainerRef;
   interval: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
@@ -60,7 +61,10 @@ export class AdBannerComponent implements OnInit, OnDestroy {
     );
 
     // define the view wrapper ref of the ad-host
-    const viewContainerRef = this.adHost.viewContainerRef;
+    // for angular 9
+    // const viewContainerRef = this.adHost.viewContainerRef;
+    // for angular 6
+    const viewContainerRef = this.adHost;
     // remove all nodes from this view wrapper
     viewContainerRef.clear();
 
