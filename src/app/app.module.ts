@@ -39,12 +39,14 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
 
 //  create AwesomeTooltipComponent dynamically in the runtime, use entryComponents instead of declarations
 
-import { AdBannerComponent } from './components/ad-banner/ad-container.component';
-import {
-  HeroJobAdComponent,
-  HeroProfileComponent
-} from './components/ad-banner/ad-content.component';
-import { AdService } from './components/ad-banner/ad.service';
+// import { AdBannerComponent } from './components/ad-banner/ad-container.component';
+// import {
+//   HeroJobAdComponent,
+//   HeroProfileComponent
+// } from './components/ad-banner/ad-content.component';
+// alternative: use an NgModule to wrap AD Banner components
+// import { AdService } from './components/ad-banner/ad.service';
+import { AdBannerModule } from './components/ad-banner/ad-banner.module';
 
 @NgModule({
   declarations: [
@@ -58,10 +60,10 @@ import { AdService } from './components/ad-banner/ad.service';
     LocationValidator,
     CustomTooltipDirective,
     CustomTooltipComponent,
-    LoaderComponent,
-    AdBannerComponent,
-    HeroJobAdComponent,
-    HeroProfileComponent
+    LoaderComponent
+    // AdBannerComponent,
+    // HeroJobAdComponent,
+    // HeroProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { AdService } from './components/ad-banner/ad.service';
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    OverlayModule
+    OverlayModule,
+    AdBannerModule
   ],
   // providers declared here is share accross the app
   providers: [
@@ -83,11 +86,15 @@ import { AdService } from './components/ad-banner/ad.service';
     VoterService,
     EventResolver,
     // { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
-    AdService
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
+    // AdService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CustomTooltipComponent, HeroJobAdComponent, HeroProfileComponent]
+  entryComponents: [
+    CustomTooltipComponent
+    // HeroJobAdComponent,
+    // HeroProfileComponent
+  ]
 })
 export class AppModule {}
 
