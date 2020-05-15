@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services';
+import { AuthService } from '../services';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { AuthService } from './services';
 })
 export class AppComponent {
   title = 'ng-fundamentals';
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.auth.checkAuthenticationStatus();

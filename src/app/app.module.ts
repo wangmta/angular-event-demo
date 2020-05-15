@@ -6,9 +6,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav/navbar.component';
-import { TOASTR_TOKEN, JQ_TOKEN, SimpleModalComponent, ModalTriggerDirective } from './common/';
-import { Error404Component } from './errors/404.component';
+import { NavBarComponent } from '../nav/navbar.component';
+import { TOASTR_TOKEN, JQ_TOKEN, SimpleModalComponent, ModalTriggerDirective } from '../common';
+import { Error404Component } from '../components/errors/404.component';
 import {
   EventsListComponent,
   EventThumbnailComponent,
@@ -17,9 +17,9 @@ import {
   EventListResolver,
   VoterService,
   EventResolver
-} from './events';
-import { LocationValidator } from './directive';
-import { AuthService } from './services';
+} from '../pages/events-list';
+import { LocationValidator } from '../directive';
+import { AuthService } from '../services';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // this is global toastr object
@@ -28,14 +28,14 @@ import * as jQuery from 'jquery';
 import {
   CustomTooltipDirective,
   CustomTooltipComponent
-} from './directive/custom-tooltip.directive';
+} from '../directive/custom-tooltip.directive';
 
 // alternative way of using global var
 // let toastr: Toastr = window['toastr'];
 // let jQuery = window['$'];
 
-import { LoaderComponent } from './reusable/loader/loader.component';
-import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
+import { LoaderComponent } from '../components/loader/loader.component';
+import { LoaderInterceptorService } from '../components/loader/loader-interceptor.service';
 
 //  create AwesomeTooltipComponent dynamically in the runtime, use entryComponents instead of declarations
 
@@ -46,9 +46,10 @@ import { LoaderInterceptorService } from './interceptors/loader-interceptor.serv
 // } from './components/ad-banner/ad-content.component';
 // alternative: use an NgModule to wrap AD Banner components
 // import { AdService } from './components/ad-banner/ad.service';
-import { AdBannerModule } from './components/ad-banner/ad-banner.module';
+import { AdBannerModule } from '../components/ad-banner/ad-banner.module';
 
 @NgModule({
+  // eagerly loaded components
   declarations: [
     AppComponent,
     EventsListComponent,
@@ -61,9 +62,6 @@ import { AdBannerModule } from './components/ad-banner/ad-banner.module';
     CustomTooltipDirective,
     CustomTooltipComponent,
     LoaderComponent
-    // AdBannerComponent,
-    // HeroJobAdComponent,
-    // HeroProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +94,7 @@ import { AdBannerModule } from './components/ad-banner/ad-banner.module';
     // HeroProfileComponent
   ]
 })
-export class AppModule {}
+export class AppModule { }
 
 // export function checkDirtyState(component: CreateEventComponent) {
 //   if (component.isDirty) {

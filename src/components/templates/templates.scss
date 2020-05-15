@@ -1,0 +1,20 @@
+@mixin sharedStyle($text-align) {
+  border: 1px solid rgb(152, 152, 152);
+  border-radius: 5px;
+  height: 30px;
+  padding: 5px;
+  text-align: $text-align;
+}
+
+.input-with-border {
+  @include sharedStyle(right);
+}
+
+.primary-button {
+  @include sharedStyle(center);
+}
+
+.search-box {
+  @include sharedStyle(left);
+  min-width: 200px;
+}
